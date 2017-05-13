@@ -14,8 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.adapter.MovieAdapter;
+import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.fragment.Movie;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MovieAdapter.ISourceAdapter {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,11 +86,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_scedhule) {
-            fragment = new Movie();
+
         } else if (id == R.id.nav_theater) {
 
         } else if (id == R.id.nav_movie) {
-
+            fragment = new Movie();
         } else if (id == R.id.nav_setting) {
 
         } else if (id == R.id.nav_about) {
@@ -97,5 +100,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void showArticles(String title, String overview) {
+
     }
 }
