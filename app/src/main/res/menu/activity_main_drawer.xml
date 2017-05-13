@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_scedhule"
+            android:icon="@drawable/ic_date_range_black_24dp"
+            android:title="SCHEDULE" />
+        <item
+            android:id="@+id/nav_theater"
+            android:icon="@drawable/ic_store_mall_directory_black_24dp"
+            android:title="TOP RATING" />
+        <item
+            android:id="@+id/nav_movie"
+            android:icon="@drawable/ic_local_movies_black_24dp"
+            android:title="MOVIE" />
+    </group>
+
+    <item android:title="OPTION">
+        <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="SETTING" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_person_black_24dp"
+                android:title="ABOUT ME" />
+        </menu>
+    </item>
+
+</menu>
