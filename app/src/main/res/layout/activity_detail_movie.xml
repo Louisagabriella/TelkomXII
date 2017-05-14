@@ -27,7 +27,8 @@
                 android:layout_height="130dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:text="budal" />
 
             <TextView
                 android:id="@+id/textViewName"
@@ -75,6 +76,12 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>
 

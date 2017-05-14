@@ -24,7 +24,8 @@
             android:name=".MainActivity"
             android:label="TELKOM XII"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".adapter.detail_movie"></activity>
+        <activity android:name=".detail_movie" />
+        <activity android:name=".view_data" />
     </application>
 
 </manifest>

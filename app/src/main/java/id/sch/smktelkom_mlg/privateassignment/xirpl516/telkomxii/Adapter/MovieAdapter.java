@@ -1,11 +1,11 @@
 package id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -46,15 +46,6 @@ public class MovieAdapter  extends RecyclerView.Adapter<MovieAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position)
     {
-        holder.lyNiar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent astagfirullah = new Intent(context, detail_movie.class);
-                astagfirullah.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                astagfirullah.putExtra("blog id",position);
-                context.startActivity(astagfirullah);
-            }
-        });
         Result movie = list.get(position);
         holder.tvName.setText(movie.title);
         holder.tvDesc.setText(movie.overview);
@@ -86,6 +77,7 @@ public class MovieAdapter  extends RecyclerView.Adapter<MovieAdapter.ViewHolder>
         TextView tvDate;
         TextView tvLanguage;
         LinearLayout lyNiar;
+        Button btnDalkan;
 
         public ViewHolder(View itemView)
         {
