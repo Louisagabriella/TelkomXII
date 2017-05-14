@@ -18,11 +18,6 @@
 
     <item android:title="OPTION">
         <menu>
-            <item
-                android:id="@+id/nav_setting"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="SETTING" />
-            <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_person_black_24dp"
                 android:title="ABOUT ME" />
