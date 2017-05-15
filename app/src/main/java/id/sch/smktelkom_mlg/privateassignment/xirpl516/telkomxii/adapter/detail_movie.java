@@ -1,8 +1,8 @@
 package id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.adapter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,9 +16,9 @@ import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.R;
 import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.database.Barang;
 import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.database.DBDataSource;
 
-public class detail_movie extends Activity implements OnClickListener {
+public class detail_movie extends AppCompatActivity implements OnClickListener {
     public String url = "http://image.tmdb.org/t/p/w500";
-    public String title, desc, pic, gambar, tanggal;
+    public String title, desc, pic, gambar, tanggal, language, bahasa;
     private Button buttonSubmit;
     private TextView edNama;
     private TextView edMerk;
@@ -30,17 +30,23 @@ public class detail_movie extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_movie);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         title = intent.getStringExtra("title");
         pic = intent.getStringExtra("poster_path");
         desc = intent.getStringExtra("overview");
-        tanggal = intent.getStringExtra("original_language");
+        tanggal = intent.getStringExtra("release_date");
+        language = intent.getStringExtra("vote_count");
+        bahasa = intent.getStringExtra("original_language");
         setTitle(title);
         gambar = url + pic;
         buttonSubmit = (Button) findViewById(R.id.button);
         buttonSubmit.setOnClickListener(this);
         ImageView detail = (ImageView) findViewById(R.id.imageViewPoster);
         TextView deskripsi = (TextView) findViewById(R.id.textViewOverview);
+        TextView date = (TextView) findViewById(R.id.textViewDesc);
+        TextView languagecuy = (TextView) findViewById(R.id.textViewLanguage);
         Glide.with(this).load(gambar)
                 .crossFade()
                 .centerCrop()
@@ -48,6 +54,8 @@ public class detail_movie extends Activity implements OnClickListener {
                 .error(R.drawable.ic_arrow_downward_black_24dp)
                 .into(detail);
         deskripsi.setText(desc);
+        date.setText(tanggal);
+        languagecuy.setText(title);
         edNama = (TextView) findViewById(R.id.textViewOverview);
         edHarga = (TextView) findViewById(R.id.textViewName);
         edMerk = (TextView) findViewById(R.id.textViewDesc);
@@ -90,4 +98,6 @@ public class detail_movie extends Activity implements OnClickListener {
         }
 
     }
+
+
 }
