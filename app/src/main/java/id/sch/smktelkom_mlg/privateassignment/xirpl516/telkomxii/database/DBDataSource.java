@@ -1,7 +1,7 @@
-package id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii;
+package id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.database;
 
 /**
- * Created by Louisa on 3/28/2017.
+ * Created by Louisa on 5/15/2017.
  */
 
 import android.content.ContentValues;
@@ -14,6 +14,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class DBDataSource {
+
     //inisialiasi SQLite Database
     private SQLiteDatabase database;
 
@@ -21,8 +22,8 @@ public class DBDataSource {
     private DBHelper dbHelper;
 
     //ambil semua nama kolom
-    private String[] allColumns = {DBHelper.COLUMN_ID, DBHelper.COLUMN_JAM,
-            DBHelper.COLUMN_NAME};
+    private String[] allColumns = {DBHelper.COLUMN_ID,
+            DBHelper.COLUMN_NAME, DBHelper.COLUMN_MERK, DBHelper.COLUMN_HARGA};
 
     //DBHelper diinstantiasi pada constructor
     public DBDataSource(Context context) {
@@ -40,14 +41,15 @@ public class DBDataSource {
     }
 
     //method untuk create/insert barang ke database
-    public datasql createBarang(String jam, String nama) {
+    public Barang createBarang(String nama, String merk, String harga) {
 
         // membuat sebuah ContentValues, yang berfungsi
         // untuk memasangkan data dengan nama-nama
         // kolom pada database
         ContentValues values = new ContentValues();
-        values.put(DBHelper.COLUMN_JAM, jam);
         values.put(DBHelper.COLUMN_NAME, nama);
+        values.put(DBHelper.COLUMN_MERK, merk);
+        values.put(DBHelper.COLUMN_HARGA, harga);
 
         // mengeksekusi perintah SQL insert data
         // yang akan mengembalikan sebuah insert ID
@@ -67,35 +69,36 @@ public class DBDataSource {
 
         // mengubah objek pada kursor pertama tadi
         // ke dalam objek barang
-        datasql newDatasql = cursorToBarang(cursor);
+        Barang newBarang = cursorToBarang(cursor);
 
         // close cursor
         cursor.close();
 
         // mengembalikan barang baru
-        return newDatasql;
+        return newBarang;
     }
 
-    private datasql cursorToBarang(Cursor cursor) {
-        // buat objek datasql baru
-        datasql datasql = new datasql();
+    private Barang cursorToBarang(Cursor cursor) {
+        // buat objek barang baru
+        Barang barang = new Barang();
         // debug LOGCAT
         Log.v("info", "The getLONG " + cursor.getLong(0));
         Log.v("info", "The setLatLng " + cursor.getString(1) + "," + cursor.getString(2));
 
-        /* Set atribut pada objek datasql dengan
+        /* Set atribut pada objek barang dengan
          * data kursor yang diambil dari database*/
-        datasql.setId(cursor.getLong(0));
-        datasql.setJamke(cursor.getString(1));
-        datasql.setNama_pelajaran(cursor.getString(2));
+        barang.setId(cursor.getLong(0));
+        barang.setNama_barang(cursor.getString(1));
+        barang.setMerk_barang(cursor.getString(2));
+        barang.setHarga_barang(cursor.getString(3));
 
-        //kembalikan sebagai objek datasql
-        return datasql;
+        //kembalikan sebagai objek barang
+        return barang;
     }
 
     //mengambil semua data barang
-    public ArrayList<datasql> getAllBarang() {
-        ArrayList<datasql> daftarDatasql = new ArrayList<datasql>();
+    public ArrayList<Barang> getAllBarang() {
+        ArrayList<Barang> daftarBarang = new ArrayList<Barang>();
 
         // select all SQL query
         Cursor cursor = database.query(DBHelper.TABLE_NAME,
@@ -106,40 +109,12 @@ public class DBDataSource {
         // jika masih ada data, masukkan data barang ke
         // daftar barang
         while (!cursor.isAfterLast()) {
-            datasql datasql = cursorToBarang(cursor);
-            daftarDatasql.add(datasql);
+            Barang barang = cursorToBarang(cursor);
+            daftarBarang.add(barang);
             cursor.moveToNext();
         }
         // Make sure to close the cursor
         cursor.close();
-        return daftarDatasql;
-    }
-
-    //ambil satu barang sesuai id
-    public datasql getBarang(long id) {
-        datasql datasql = new datasql(); //inisialisasi datasql
-        //select query
-        Cursor cursor = database.query(DBHelper.TABLE_NAME, allColumns, "_id =" + id, null, null, null, null);
-        //ambil data yang pertama
-        cursor.moveToFirst();
-        //masukkan data cursor ke objek datasql
-        datasql = cursorToBarang(cursor);
-        //tutup sambungan
-        cursor.close();
-        //return datasql
-        return datasql;
-    }
-
-    //update barang yang diedit
-    public void updateBarang(datasql b) {
-        //ambil id barang
-        String strFilter = "_id=" + b.getId();
-        //memasukkan ke content values
-        ContentValues args = new ContentValues();
-        //masukkan data sesuai dengan kolom pada database
-        args.put(DBHelper.COLUMN_JAM, b.getJamke());
-        args.put(DBHelper.COLUMN_NAME, b.getNama_pelajaran());
-        //update query
-        database.update(DBHelper.TABLE_NAME, args, strFilter, null);
+        return daftarBarang;
     }
 }

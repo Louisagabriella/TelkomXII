@@ -1,9 +1,10 @@
-package id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii;
+package id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.database;
 
 /**
- * Created by Louisa on 3/28/2017.
+ * Created by Louisa on 5/15/2017.
  */
 
+//deklarasi import package
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -16,17 +17,19 @@ public class DBHelper extends SQLiteOpenHelper {
      **/
     public static final String TABLE_NAME = "data_inventori";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_JAM = "Jam_ke";
-    public static final String COLUMN_NAME = "nama_pelajaran";
+    public static final String COLUMN_NAME = "nama_barang";
+    public static final String COLUMN_MERK = "merk_barang";
+    public static final String COLUMN_HARGA = "harga_barang";
     private static final String db_name = "inventori.db";
-    private static final int db_version = 1;
+    private static final int db_version=1;
 
     // Perintah SQL untuk membuat tabel database baru
     private static final String db_create = "create table "
             + TABLE_NAME + "("
             + COLUMN_ID + " integer primary key autoincrement, "
-            + COLUMN_JAM + " varchar(50) not null, "
-            + COLUMN_NAME + " varchar(50) not null);";
+            + COLUMN_NAME + " varchar(50) not null, "
+            + COLUMN_MERK + " varchar(50) not null, "
+            + COLUMN_HARGA + " varchar(50) not null);";
 
     public DBHelper(Context context) {
         super(context, db_name, null, db_version);
@@ -48,4 +51,5 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+
 }

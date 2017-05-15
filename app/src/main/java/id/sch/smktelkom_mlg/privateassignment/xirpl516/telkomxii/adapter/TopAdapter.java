@@ -21,31 +21,28 @@ import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.model.Result;
  * Created by Louisa on 5/14/2017.
  */
 
-public class MovieAdapter  extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
+public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
     Context context;
     ArrayList<Result> list;
     ISourceAdapter mISourceAdapter;
 
 
-    public MovieAdapter(Context context, ArrayList<Result> list)
-    {
+    public TopAdapter(Context context, ArrayList<Result> list) {
         this.list = list;
         this.context = context;
         mISourceAdapter = (ISourceAdapter) context;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.movie_list, parent, false);
+                .inflate(R.layout.top_list, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position)
-    {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         final Result movie = list.get(position);
 
         holder.tvName.setText(movie.title);
@@ -53,7 +50,7 @@ public class MovieAdapter  extends RecyclerView.Adapter<MovieAdapter.ViewHolder>
         holder.tvDate.setText(movie.release_date);
         holder.tvLanguage.setText(movie.original_language);
         Glide.with(context)
-                .load("http://image.tmdb.org/t/p/w500"+ movie.poster_path)
+                .load("http://image.tmdb.org/t/p/w500" + movie.poster_path)
                 .into(holder.ivPoster);
         holder.lyNiar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,20 +67,17 @@ public class MovieAdapter  extends RecyclerView.Adapter<MovieAdapter.ViewHolder>
     }
 
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
         if (list != null)
             return list.size();
         return 0;
     }
 
-    public interface ISourceAdapter
-    {
+    public interface ISourceAdapter {
         void showArticles(String title, String overview, String release_date);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName;
         TextView tvDesc;
         ImageView ivPoster;
@@ -91,13 +85,12 @@ public class MovieAdapter  extends RecyclerView.Adapter<MovieAdapter.ViewHolder>
         TextView tvLanguage;
         LinearLayout lyNiar;
 
-        public ViewHolder(View itemView)
-        {
+        public ViewHolder(View itemView) {
             super(itemView);
             tvName = (TextView) itemView.findViewById(R.id.textViewName);
             tvDesc = (TextView) itemView.findViewById(R.id.textViewDesc);
             ivPoster = (ImageView) itemView.findViewById(R.id.imageViewPoster);
-            tvLanguage = (TextView)itemView.findViewById(R.id.textViewOriginalLanguage);
+            tvLanguage = (TextView) itemView.findViewById(R.id.textViewOriginalLanguage);
             tvDate = (TextView) itemView.findViewById(R.id.coming_textViewDate);
             lyNiar = (LinearLayout) itemView.findViewById(R.id.click);
         }
