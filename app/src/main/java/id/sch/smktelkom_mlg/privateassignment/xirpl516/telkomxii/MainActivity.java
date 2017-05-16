@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.adapter.MovieAdapter;
+import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.fragment.About;
 import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.fragment.History;
 import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.fragment.Movie;
 import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.fragment.Top;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        changePage(R.id.nav_scedhule);
+        navigationView.setCheckedItem(R.id.nav_scedhule);
     }
 
     @Override
@@ -66,8 +71,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment = null;
+
         int id = item.getItemId();
+        changePage(id);
+        return true;
+    }
+
+    private void changePage(int id) {
+        Fragment fragment = null;
 
         if (id == R.id.nav_scedhule) {
             fragment = new History();
@@ -75,11 +86,12 @@ public class MainActivity extends AppCompatActivity
             fragment = new Top();
         } else if (id == R.id.nav_movie) {
             fragment = new Movie();
+        } else if (id == R.id.nav_about) {
+            fragment = new About();
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitNow();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 
     @Override

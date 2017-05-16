@@ -19,12 +19,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
-            android:label="TELKOM XII"
+            android:label="TELKOM XXI"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".adapter.detail_movie" />
+        <activity android:name=".adapter.detail_movie">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>
