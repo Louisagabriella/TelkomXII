@@ -1,5 +1,5 @@
 # Nama File <br>
-TelkomXII
+Telkom XXI
 # Link Apk <br>
 https://drive.google.com/a/smktelkom-mlg.sch.id/file/d/0B2j5Yd_9VxeoTkxxeTdYMjNfRFk/view?usp=sharing
 # Identitas <br>
