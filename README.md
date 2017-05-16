@@ -20,6 +20,8 @@ Volly dan LocalDataBase Sql lite
 # Deskripsi
 aplikasi ini merupakan aplikasi yang berguna untuk memberikan informasi tentang film atau movie apa saja yang telah atau akan release di layarkaca. aplikasi ini juga berfungsi sebagai referensi untuk memberitahu pengguna film atau movie apa saja yang diminati atau film/movie yang lagi top rating.Aplikasi ini juga dilengkapi oleh penyimpanan internal. berupa database sqllite yang berfungsi sebagai menyimpan tentang film/movie yang ingin anda baca dilain waktu dengan atau tanpa menggunakan internet. 
 # Kelebihan
+kelebihan aplikasi ini <br>
+1. aplikasi ini memiliki local database sqlite. sehingga anda mampu menyimpam apa yang anda baca sehingga anda mampu membaca kembali saat keadaan offline
 # Secrenshoot
 ![screenshot_20170516-191347](https://cloud.githubusercontent.com/assets/21364340/26106163/3c9dc65e-3a6f-11e7-893b-97badfd51bf8.png) <br>
 ![screenshot_20170516-191350](https://cloud.githubusercontent.com/assets/21364340/26106162/3c95b860-3a6f-11e7-9752-3bf4d423898d.png)<br>
