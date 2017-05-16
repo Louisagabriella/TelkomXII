@@ -18,6 +18,7 @@ Navigasi Drawer
 # Library dan Local database yang digunakan <br>
 Volly dan LocalDataBase Sql lite
 # Deskripsi
+aplikasi ini merupakan aplikasi yang berguna untuk memberikan informasi tentang film atau movie apa saja yang telah atau akan release di layarkaca. aplikasi ini juga berfungsi sebagai referensi untuk memberitahu pengguna film atau movie apa saja yang diminati atau film/movie yang lagi top rating.Aplikasi ini juga dilengkapi oleh penyimpanan internal. berupa database sqllite yang berfungsi sebagai menyimpan tentang film/movie yang ingin anda baca dilain waktu dengan atau tanpa menggunakan internet. 
 # Kelebihan
 # Secrenshoot
 ![screenshot_20170516-191347](https://cloud.githubusercontent.com/assets/21364340/26106163/3c9dc65e-3a6f-11e7-893b-97badfd51bf8.png) <br>
