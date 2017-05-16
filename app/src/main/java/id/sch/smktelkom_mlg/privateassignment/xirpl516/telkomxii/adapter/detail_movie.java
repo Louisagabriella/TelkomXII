@@ -29,9 +29,6 @@ public class detail_movie extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_movie);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         Intent intent = getIntent();
         title = intent.getStringExtra("title");
         pic = intent.getStringExtra("poster_path");
@@ -56,8 +53,8 @@ public class detail_movie extends AppCompatActivity implements OnClickListener {
         deskripsi.setText(desc);
         date.setText(tanggal);
         languagecuy.setText(title);
-        edNama = (TextView) findViewById(R.id.textViewOverview);
-        edHarga = (TextView) findViewById(R.id.textViewName);
+        edNama = (TextView) findViewById(R.id.textViewLanguage);
+        edHarga = (TextView) findViewById(R.id.textViewOverview);
         edMerk = (TextView) findViewById(R.id.textViewDesc);
         // instanstiasi kelas DBDataSource
         dataSource = new DBDataSource(this);
@@ -79,9 +76,9 @@ public class detail_movie extends AppCompatActivity implements OnClickListener {
         if (edNama.getText() != null && edMerk.getText() != null && edHarga.getText() != null) {
             /* jika field nama, merk, dan harga tidak kosong
              * maka masukkan ke dalam data barang*/
-            nama = edNama.getText().toString();
-            merk = edMerk.getText().toString();
-            harga = edHarga.getText().toString();
+            nama = edNama.getText().toString() + "\n";
+            merk = edMerk.getText().toString() + "\n";
+            harga = edHarga.getText().toString() + "\n";
         }
 
         switch (v.getId()) {
@@ -90,10 +87,10 @@ public class detail_movie extends AppCompatActivity implements OnClickListener {
                 barang = dataSource.createBarang(nama, merk, harga);
 
                 //konfirmasi kesuksesan
-                Toast.makeText(this, "masuk Barang\n" +
-                        "nama" + barang.getNama_barang() +
-                        "merk" + barang.getMerk_barang() +
-                        "harga" + barang.getHarga_barang(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Disimpan Di History\n" +
+                        "JUDUL " + barang.getNama_barang() + "\n" +
+                        "OVERVIEW " + barang.getMerk_barang() + "\n" +
+                        "RELEASE DATE " + barang.getHarga_barang(), Toast.LENGTH_LONG).show();
                 break;
         }
 

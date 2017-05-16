@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -18,16 +19,16 @@ import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.database.DBData
 /**
  * A simple {@link Fragment} subclass.
  */
-public class history extends Fragment {
-
-    //inisialisasi kontroller
+public class History extends Fragment {
+    private ArrayAdapter<Barang> listAdapter;
     private DBDataSource dataSource;
 
     //inisialisasi arraylist
     private ArrayList<Barang> values;
-    private ArrayAdapter<Barang> listAdapter;
+    private Button editButton;
+    private Button delButton;
 
-    public history() {
+    public History() {
         // Required empty public constructor
     }
 
@@ -40,9 +41,9 @@ public class history extends Fragment {
         dataSource.open();
         values = dataSource.getAllBarang();
         ListView listview = (ListView) rootView.findViewById(R.id.iis);
+
         ArrayAdapter<Barang> adapter = new ArrayAdapter<Barang>(this.getActivity(), android.R.layout.simple_list_item_1, values);
         listview.setAdapter(adapter);
         return rootView;
     }
-
 }

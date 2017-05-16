@@ -12,9 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.adapter.MovieAdapter;
+import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.fragment.History;
 import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.fragment.Movie;
 import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.fragment.Top;
-import id.sch.smktelkom_mlg.privateassignment.xirpl516.telkomxii.fragment.history;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MovieAdapter.ISourceAdapter {
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_scedhule) {
-            fragment = new history();
+            fragment = new History();
         } else if (id == R.id.nav_theater) {
             fragment = new Top();
         } else if (id == R.id.nav_movie) {

@@ -9,13 +9,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
 
 public class DBDataSource {
 
-    //inisialiasi SQLite Database
     private SQLiteDatabase database;
 
     //inisialisasi kelas DBHelper
@@ -71,10 +69,10 @@ public class DBDataSource {
         // ke dalam objek barang
         Barang newBarang = cursorToBarang(cursor);
 
-        // close cursor
+        //close cursor
         cursor.close();
 
-        // mengembalikan barang baru
+        //mengembalikan barang baru
         return newBarang;
     }
 
@@ -82,11 +80,11 @@ public class DBDataSource {
         // buat objek barang baru
         Barang barang = new Barang();
         // debug LOGCAT
-        Log.v("info", "The getLONG " + cursor.getLong(0));
-        Log.v("info", "The setLatLng " + cursor.getString(1) + "," + cursor.getString(2));
+        //Log.v("info", "The getLONG "+cursor.getLong(0));
+        //Log.v("info", "The setLatLng "+cursor.getString(1)+","+cursor.getString(2));
 
-        /* Set atribut pada objek barang dengan
-         * data kursor yang diambil dari database*/
+        // Set atribut pada objek barang dengan
+        // data kursor yang diambil dari database
         barang.setId(cursor.getLong(0));
         barang.setNama_barang(cursor.getString(1));
         barang.setMerk_barang(cursor.getString(2));
@@ -116,5 +114,26 @@ public class DBDataSource {
         // Make sure to close the cursor
         cursor.close();
         return daftarBarang;
+    }
+
+    //ambil satu barang sesuai id
+    public Barang getBarang(long id) {
+        Barang barang = new Barang(); //inisialisasi barang
+        //select query
+        Cursor cursor = database.query(DBHelper.TABLE_NAME, allColumns, "_id =" + id, null, null, null, null);
+        //ambil data yang pertama
+        cursor.moveToFirst();
+        //masukkan data cursor ke objek barang
+        barang = cursorToBarang(cursor);
+        //tutup sambungan
+        cursor.close();
+        //return barang
+        return barang;
+    }
+
+    // delete barang sesuai ID
+    public void deleteBarang(long id) {
+        String strFilter = "_id=" + id;
+        database.delete(DBHelper.TABLE_NAME, strFilter, null);
     }
 }
